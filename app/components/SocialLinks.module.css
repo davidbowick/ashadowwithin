@@ -1,0 +1,64 @@
+.socialLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.socialLinks li a {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+
+.socialLinks svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: fill 0.2s ease-in-out;
+}
+
+.socialLinks svg path {
+  fill: currentColor;
+}
+
+
+
+.youtube .icon:hover {
+  color: #ff0000;
+}
+
+.tiktok:hover {
+  color: #ee1d52;
+}
+
+.instagram:hover {
+  color: #e4405f;
+}
+
+.spotify:hover {
+  color: #1db954;
+}
+
+.apple-music:hover {
+  color: #fa57c1;
+}
+
+.facebook:hover {
+  color: #1877f2;
+}
+
+.bandcamp:hover {
+  color: #629aa9;
+}
+
+.tumblr:hover {
+  color: #36465d;
+}
+
+.twitter:hover {
+  color: #1da1f2;
+}
