@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    // turbo: { enabled: false }, // Turbopack options are deprecated or not supported
-  },
+  turbo: false
 };
 
 export default nextConfig;
