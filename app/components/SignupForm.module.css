@@ -1,0 +1,35 @@
+.form {
+  display: flex;
+  padding: 0;
+  
+}
+.input {
+  background: rgba(0, 0, 0, 0.4);       /* semi-transparent dark layer */
+  backdrop-filter: blur(8px);           /* frosted blur */
+  -webkit-backdrop-filter: blur(8px);   /* Safari support */
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+
+.input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.input:focus {
+  outline: none;
+  border-color: #ff4a4a; /* brand accent on focus */
+  background-color: rgba(0,0,0,0.6);
+}
+
+.button {
+  background: rgba(0, 0, 0, 0.8);       /* semi-transparent dark layer */
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  margin-left: 8px;
+  cursor: pointer;
+}

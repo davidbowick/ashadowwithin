@@ -5,6 +5,7 @@ import { client } from "./lib/sanity";
 import { videoCoverStyles } from "./lib/videoCover";
 import SignupForm from "./components/SignupForm";
 import Header from "./components/Header";
+import TextureOverlay from "./components/TextureOverlay";
 
 
 async function getVideoBackground() {
@@ -22,9 +23,11 @@ export default async function Home() {
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center">
         <Header />
-        <SocialLinks />
         
+        <SocialLinks />
+        <SignupForm />
       </main>
+      
       <div
         style={{
           position: "fixed",
@@ -38,6 +41,7 @@ export default async function Home() {
       >
         {video && (
           <iframe
+            className="video-background"
             src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${video.youtubeId}&controls=0&showinfo=0&modestbranding=1`}
             frameBorder="0"
             allow="autoplay; fullscreen"
@@ -46,14 +50,8 @@ export default async function Home() {
           />
         )}
       </div>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <section className="py-12 text-center">
-          
-          <h2 className="p-2">Stay Updated</h2>
-          <SignupForm />
-        
-      </section>
-      </footer>
+      <TextureOverlay />
     </div>
+    
   );
 }

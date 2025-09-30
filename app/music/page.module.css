@@ -1,0 +1,65 @@
+.musicPage {
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.albums-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.albumsGrid {
+  display: grid;
+  gap: 2rem;
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .albumsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .albumsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* desktop */
+@media (min-width: 1025px) {
+  .albumsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.albumCard {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.albumCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.albumCard img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.albumCard h2 {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+}

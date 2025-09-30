@@ -1,0 +1,88 @@
+.header {
+  position: relative;
+  z-index: 100;
+  mix-blend-mode: difference; /* 🔥 this makes it interact with background */
+  color: white; /* fallback if blend-mode isn’t visible */
+  font-family: var(--font-a-shadow-within), sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.logo {
+  display: block;
+}
+
+.headerHome .navDesktop {
+  display: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+/* Default header for all other pages */
+.headerDefault {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.navDesktop {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.activeLink {
+  text-decoration: underline;
+}
+
+/* Mobile-specific */
+.menuButton {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navDesktop {
+    display: none;
+  }
+
+  .menuButton {
+    display: block;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    backdrop-filter: blur(12px);
+  }
+
+  .menuContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .closeButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+}

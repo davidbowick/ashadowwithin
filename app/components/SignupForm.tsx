@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import styles from "./SignupForm.module.css";
 
 export default function SignupForm() {
   const [email, setEmail] = useState("");
@@ -38,19 +39,19 @@ export default function SignupForm() {
 }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-row gap-3 max-w-sm mx-auto">
+    <form onSubmit={handleSubmit} className={styles.form}>
       <input
         type="email"
         required
         placeholder="Enter your email"
+        className={styles.input}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="p-2 rounded bg-white text-black"
       />
       <button
         type="submit"
         disabled={loading}
-        className="border-gray-600 bg-black text-white focus:ring-red-600 p-2 rounded"
+        className={styles.button}
       >
         {loading ? "Signing up..." : "Subscribe"}
       </button>
