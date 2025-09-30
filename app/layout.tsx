@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import HeaderWrapper from "./components/HeaderWrapper";
 import TextureOverlay from "./components/TextureOverlay";
+import Footer from "./components/Footer";
 
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -58,9 +59,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/favicon.png" type="image/png" />
       </head>
       <body>
+        {/* Skip link for accessibility */}
+  <a href="#main-content" className="skip-link">Skip to main content</a>
+
+        <div className="siteWrapper">
         <HeaderWrapper />
-        <main className="main">{children}</main>
+        <main className="main" id="main-content">{children}</main>
+        <Footer />
         <TextureOverlay />
+        </div>
       </body>
     </html>
   );

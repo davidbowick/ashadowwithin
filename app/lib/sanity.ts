@@ -6,3 +6,16 @@ export const client = createClient({
   useCdn: true, // `false` if you want the freshest data
   apiVersion: "2025-01-01", // today's date or latest
 });
+
+export async function getReleases() {
+  return client.fetch(`
+    *[_type == "release"] | order(releaseDate desc) {
+      _id,
+      title,
+      releaseDate,
+      "coverImage": coverImage.asset->url,
+      spotifyUrl,
+      links
+    }
+  `);
+}

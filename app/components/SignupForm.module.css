@@ -29,7 +29,9 @@
   border: 1px solid #333;
   border-radius: 4px;
   padding: 8px 16px;
-  font-size: 16px;
+  font-size: 1rem;
+  letter-spacing: 2px;
   margin-left: 8px;
   cursor: pointer;
+  font-family: var(--font-a-shadow-within), sans-serif;
 }

@@ -1,7 +1,7 @@
 .socialLinks {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.5rem;
   list-style: none;
   padding: 0;
@@ -60,3 +60,10 @@
 .twitter:hover {
   color: #1da1f2;
 }
+
+.socials-sm a {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+

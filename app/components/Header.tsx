@@ -5,13 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import styles from "./Header.module.css";
-
-const NAV_ITEMS = [
-  { href: "/music", label: "Music" },
-  { href: "/videos", label: "Videos" },
-  { href: "/merch", label: "Merch" },
-  { href: "/contact", label: "Contact" },
-];
+import { NAV_ITEMS } from "./navItems";
 
 export default function Header() {
   const pathname = usePathname();
@@ -53,6 +47,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
+                aria-current={isActive ? "page" : undefined}
                 className={isActive ? styles.activeLink : ""}
               >
                 {item.label}
@@ -65,7 +60,9 @@ export default function Header() {
       {/* Mobile menu button */}
       <button
         className={styles.menuButton}
+        tabIndex={0}
         onClick={() => setMenuOpen(true)}
+        onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setMenuOpen(true)}
       >
         _MENU
       </button>

@@ -1,13 +1,22 @@
 .header {
   position: relative;
   z-index: 100;
-  mix-blend-mode: difference; /* 🔥 this makes it interact with background */
   color: white; /* fallback if blend-mode isn’t visible */
   font-family: var(--font-a-shadow-within), sans-serif;
   text-transform: uppercase;
   font-size: 1.5rem;
   width: 100%;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85); /* backdrop for readability */
+  backdrop-filter: blur(6px);
+}
+
+.headerHome {
+ background-color: transparent; 
+ mix-blend-mode: difference;
 }
 
 .logo {
@@ -21,6 +30,28 @@
   justify-content: space-between;
   font-size: 2.5rem;
   margin-top: 2.5rem;
+}
+
+.navDesktop a {
+  color: white;
+  text-decoration: none;
+  padding: 0 1rem;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  mix-blend-mode: difference;
+}
+
+.headerHome .navDesktop a {
+  color: white;
+  text-decoration: none;
+  padding: 0 1rem;
+  mix-blend-mode: difference;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+
+.navDesktop a:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.9));
 }
 
 /* Default header for all other pages */

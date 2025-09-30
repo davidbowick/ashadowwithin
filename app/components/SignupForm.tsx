@@ -40,7 +40,11 @@ export default function SignupForm() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
+      <label htmlFor="newsletter-email" className="visually-hidden">
+        Email Address
+      </label>
       <input
+        id="newsletter-email"
         type="email"
         required
         placeholder="Enter your email"

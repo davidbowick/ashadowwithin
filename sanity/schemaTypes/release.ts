@@ -32,8 +32,9 @@ export default defineType({
       type: "object",
       fields: [
         { name: "appleMusic", title: "Apple Music", type: "url" },
-        { name: "youtube", title: "YouTube", type: "url" },
+        { name: "youtube", title: "YouTube Music", type: "url" },
         { name: "bandcamp", title: "Bandcamp", type: "url" },
+        { name: "amazonMusic", title: "Amazon Music", type: "url" },
       ],
     }),
   ],

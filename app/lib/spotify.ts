@@ -27,7 +27,7 @@ export const getArtistAlbums = async (artistId: string) => {
   const token = await getAccessToken();
 
   const res = await fetch(
-    `https://api.spotify.com/v1/artists/${artistId}/albums?include_groups=album,single&limit=20`,
+    `https://api.spotify.com/v1/artists/${artistId}/albums?include_groups=album,single&limit=50`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
