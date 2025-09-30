@@ -20,7 +20,6 @@
 .artworkWrapper {
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
 }
 
 .artwork {
@@ -79,13 +78,18 @@
   gap: 0.5rem;
 }
 
+.links li {
+  display: inline-block;
+}
+
 .links li a {
   background: white;
   color: black;
   text-transform: uppercase;
+  display: block;
   font-weight: bold;
   letter-spacing: 1px;
-  padding: 0.75rem;
+  padding: 0.5rem;
   text-decoration: none;
   transition: all 0.2s ease;
 
@@ -94,4 +98,20 @@
 .links li a:hover {
   background: #000; /* accent */
   color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .albumsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+  }
+  .overlay {
+    position: static;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    margin-top: 0.75rem;
+    text-align: center;
+    background: none;
+    padding: 0;
+  }
 }

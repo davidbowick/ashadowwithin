@@ -58,7 +58,6 @@ body::before {
   width: 100%;
   max-width: 1800px;
   margin: 0 auto;
-  padding: 2rem;;
 }
 
 .visually-hidden {
@@ -99,13 +98,6 @@ h1 {
 #logo:hover {
   transform: scale(1.05);
   filter: drop-shadow(0 0 12px rgba(255,255,255,0.9));
-}
-
-
-.main {
-  max-width: 1800px;
-  margin: 0px auto;
-  padding: 0 20px;
 }
 
 .socials-sm a {

@@ -14,7 +14,11 @@ export default function Header() {
 
   return (
     <header
-      className={`${styles.header} ${isHome ? styles.headerHome : styles.headerDefault}`}
+      className={[
+    styles.header,
+    isHome ? styles.headerHome : styles.headerDefault,
+    menuOpen ? styles.menuOpen : "",
+  ].join(" ")}
     >
       {/* Hidden SEO title */}
       <h1 className="visually-hidden">

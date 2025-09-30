@@ -57,3 +57,9 @@
 .video a:hover p {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 768px) {
+  .videos {
+    grid-template-columns: repeat(auto-fill, minmax(98%, 1fr));
+  }
+}

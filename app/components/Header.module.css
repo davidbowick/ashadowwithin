@@ -1,7 +1,8 @@
 .header {
-  position: relative;
+
   z-index: 100;
-  color: white; /* fallback if blend-mode isn’t visible */
+  color: white;
+  /* fallback if blend-mode isn’t visible */
   font-family: var(--font-a-shadow-within), sans-serif;
   text-transform: uppercase;
   font-size: 1.5rem;
@@ -10,13 +11,27 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.85); /* backdrop for readability */
+  background: rgba(0, 0, 0, 0.85);
+  /* backdrop for readability */
   backdrop-filter: blur(6px);
 }
 
 .headerHome {
- background-color: transparent; 
- mix-blend-mode: difference;
+  background-color: transparent;
+  mix-blend-mode: difference;
+  position: relative;
+  backdrop-filter: none;
+}
+
+.headerHome.menuOpen {
+  overflow: hidden;
+  mix-blend-mode: normal !important;
+  backdrop-filter: none;
+  background: transparent;
+}
+
+.menuOpen .overlay {
+  display: flex; /* Ensure it’s visible when menu is open */
 }
 
 .logo {
@@ -30,6 +45,7 @@
   justify-content: space-between;
   font-size: 2.5rem;
   margin-top: 2.5rem;
+  position: relative;
 }
 
 .navDesktop a {
@@ -51,7 +67,7 @@
 
 .navDesktop a:hover {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.9));
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.9));
 }
 
 /* Default header for all other pages */
@@ -77,12 +93,19 @@
 }
 
 @media (max-width: 768px) {
+  .headerHome .navDesktop {
+    display: none;
+  }
+
+
   .navDesktop {
     display: none;
   }
 
   .menuButton {
     display: block;
+    position: relative;
+    top: 5px;
   }
 
   .overlay {
@@ -96,15 +119,28 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 200;
-    backdrop-filter: blur(12px);
+    z-index: 9999;
+    mix-blend-mode: normal !important;
+  }
+
+  .overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: -1;
+    /* sits behind the black overlay */
   }
 
   .menuContent {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    justify-content: center;
+    text-align: center;
   }
+
 
   .closeButton {
     position: absolute;
@@ -115,5 +151,22 @@
     border: none;
     color: white;
     cursor: pointer;
+    font-family: var(--font-a-shadow-within), sans-serif;
+  }
+
+  .headerHome .menuButton {
+    display: block;
+    position: fixed !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    font-size: 1.5rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+    mix-blend-mode: difference;
+    z-index: 9999;
+    transform: none !important;
+    align-self: auto !important;
+    flex: none !important;
   }
 }
