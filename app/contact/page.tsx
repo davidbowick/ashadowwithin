@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "./page.module.css"; // create a CSS module for styling
 import SignupForm from "@/components/SignupForm"; 
 import SocialLinks from "@/components/SocialLinks";
+import YouTubeSubscribe from "@/components/YouTubeSubscribe";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -87,6 +88,10 @@ export default function ContactPage() {
       <div className={styles.socials}>
         <h2>Follow Us</h2>
         <SocialLinks/>
+      </div>
+
+      <div className={styles.youtube}>
+        <YouTubeSubscribe />
       </div>
       </aside>
     </main>

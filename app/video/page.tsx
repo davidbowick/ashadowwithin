@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import styles from "./page.module.css";
 import Script from "next/script";
+import YouTubeSubscribe from "@/components/YouTubeSubscribe";
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
 const PLAYLIST_ID = "PLd1p8Nn8hHQCkuqbu8NbpD7hZDFrgy1QI";
@@ -136,6 +137,7 @@ export default async function VideoPage() {
         }}
       />
       <h2 className="center visually-hidden">Videos</h2>
+      <YouTubeSubscribe />
       {/* Featured video */}
       <section className={styles.featured}>
         <iframe
@@ -144,6 +146,7 @@ export default async function VideoPage() {
           allowFullScreen
         />
       </section>
+      
 
       {/* Grid of other videos */}
       <section className={styles.videos}>

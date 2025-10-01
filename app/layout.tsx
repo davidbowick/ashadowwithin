@@ -1,3 +1,4 @@
+import Script from "next/script"
 import { usePathname } from "next/navigation";  
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -52,7 +53,46 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "@id": "http://musicbrainz.org/artist/5e47474e-bcfe-4165-bbb0-42669f664ed5",
+    name: "A Shadow Within",
+    image: [
+      "https://ashadowwithin.com/images/a-shadow-within.jpg", // swap to actual media URL
+    ],
+    logo: "https://ashadowwithin.com/a-shadow-within-logo.png",
+    foundingLocation: {
+      "@type": "City",
+      name: "Denver",
+    },
+    url: "https://ashadowwithin.com",
+    foundingDate: "2022",
+    genre: "Metal",
+    member: [
+      {
+        "@type": "OrganizationRole",
+        member: {
+          "@type": "Person",
+          name: "David Bowick",
+        },
+        startDate: "2022",
+        roleName: ["vocals", "guitar", "mixing", "production"],
+      },
+    ],
+    sameAs: [
+      "https://www.instagram.com/ashadowwithin",
+      "https://www.youtube.com/@ashadowwithinmusic",
+      "https://www.tiktok.com/@ashadowwithin",
+      "https://ashadowwithinmerch.com/",
+      "https://ashadowwithin.bandcamp.com/",
+      "https://open.spotify.com/artist/30i42tQw7YOSEFgbPBYEqW",
+      "https://music.apple.com/us/artist/a-shadow-within/1662683043",
+      "https://twitter.com/a_shadow_within",
+      "https://www.facebook.com/@ashadowwithin",
+    ],
+  };
+
   return (
     <html lang="en" className={aShadowWithin.variable}>
       <head>
@@ -60,13 +100,37 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         {/* Skip link for accessibility */}
-  <a href="#main-content" className="skip-link">Skip to main content</a>
+        <a href="#main-content" className="skip-link">Skip to main content</a>
 
         <div className="siteWrapper">
         <HeaderWrapper />
         <main className="main" id="main-content">{children}</main>
         <Footer />
         <TextureOverlay />
+
+        {/* Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+        {/* JSON-LD Schema */}
+        <Script
+          id="schema-musicgroup"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+        
         </div>
       </body>
     </html>

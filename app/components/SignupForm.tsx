@@ -57,7 +57,7 @@ export default function SignupForm() {
         disabled={loading}
         className={styles.button}
       >
-        {loading ? "Signing up..." : "Subscribe"}
+        {loading ? "Signing up..." : "Sign up"}
       </button>
       {message && <p className="text-sm text-center mt-3">{message}</p>}
     </form>

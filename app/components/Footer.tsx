@@ -6,8 +6,11 @@ import styles from "./Footer.module.css";
 import { NAV_ITEMS } from "./navItems";
 import SocialLinks from "./SocialLinks";
 import SignupForm from "./SignupForm";
+import { getBio } from "@/lib/sanity";
+import { PortableText } from "next-sanity";
 
-export default function Footer() {
+export default async function Footer() {
+  const bio = await getBio();
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -21,7 +24,7 @@ export default function Footer() {
             priority
           />
           <p className={styles.tagline}>
-            Alternative metal band from Denver, CO. New music, videos, and merch.
+            {bio?.shortBio}
           </p>
           <p className={styles.copyright}>
             © {new Date().getFullYear()} A Shadow Within. All rights reserved.

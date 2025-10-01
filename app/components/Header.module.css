@@ -1,5 +1,5 @@
-.header {
 
+.header {
   z-index: 100;
   color: white;
   /* fallback if blend-mode isn’t visible */
@@ -11,7 +11,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.75);
   /* backdrop for readability */
   backdrop-filter: blur(6px);
 }
@@ -39,7 +39,6 @@
 }
 
 .headerHome .navDesktop {
-  display: none;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -51,7 +50,7 @@
 .navDesktop a {
   color: white;
   text-decoration: none;
-  padding: 0 1rem;
+  padding: 0 .5rem;
   transition: transform 0.2s ease, filter 0.2s ease;
   mix-blend-mode: difference;
 }
@@ -92,10 +91,15 @@
   display: none;
 }
 
+#hamburger {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .headerHome .navDesktop {
     display: none;
   }
+  
 
 
   .navDesktop {
@@ -119,7 +123,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 999;
     mix-blend-mode: normal !important;
   }
 
@@ -169,4 +173,10 @@
     align-self: auto !important;
     flex: none !important;
   }
+}
+
+.hamburger {
+  position: fixed;
+  top: 0;
+  right: 0;
 }

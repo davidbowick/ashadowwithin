@@ -42,7 +42,6 @@
 
 .tagline {
   margin: 1rem 0;
-  font-style: italic;
 }
 
 .social {
@@ -93,4 +92,11 @@
 
 .footerSocials {
   margin-bottom: 2rem !important;
+}
+
+
+@media (min-width: 769px) {
+  .col h3 {
+    margin-top: 15px;
+  }
 }

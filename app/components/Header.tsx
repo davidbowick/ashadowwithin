@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import styles from "./Header.module.css";
 import { NAV_ITEMS } from "./navItems";
+import MetalHamburger from "./MetalHamburger";
 
 export default function Header() {
   const pathname = usePathname();
@@ -15,10 +16,10 @@ export default function Header() {
   return (
     <header
       className={[
-    styles.header,
-    isHome ? styles.headerHome : styles.headerDefault,
-    menuOpen ? styles.menuOpen : "",
-  ].join(" ")}
+        styles.header,
+        isHome ? styles.headerHome : styles.headerDefault,
+        menuOpen ? styles.menuOpen : "",
+      ].join(" ")}
     >
       {/* Hidden SEO title */}
       <h1 className="visually-hidden">
@@ -62,24 +63,15 @@ export default function Header() {
       
 
       {/* Mobile menu button */}
-      <button
-        className={styles.menuButton}
-        tabIndex={0}
-        onClick={() => setMenuOpen(true)}
-        onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setMenuOpen(true)}
-      >
-        _MENU
-      </button>
+      <MetalHamburger
+        isOpen={menuOpen}
+        onToggle={() => setMenuOpen(!menuOpen)}
+      />
+      
 
       {/* Overlay menu */}
       {menuOpen && (
         <div className={styles.overlay}>
-          <button
-            className={styles.closeButton}
-            onClick={() => setMenuOpen(false)}
-          >
-            ✕
-          </button>
           <nav className={styles.menuContent}>
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href;

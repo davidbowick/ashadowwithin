@@ -19,3 +19,12 @@ export async function getReleases() {
     }
   `);
 }
+
+export async function getBio() {
+  return client.fetch(`
+    *[_type == "bio"][0]{
+      shortBio,
+      longBio
+    }
+  `);
+}
