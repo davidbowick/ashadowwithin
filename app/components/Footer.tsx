@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.css";
@@ -7,7 +5,6 @@ import { NAV_ITEMS } from "./navItems";
 import SocialLinks from "./SocialLinks";
 import SignupForm from "./SignupForm";
 import { getBio } from "@/lib/sanity";
-import { PortableText } from "next-sanity";
 
 export default async function Footer() {
   const bio = await getBio();
