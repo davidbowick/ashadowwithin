@@ -1,7 +1,9 @@
-// app/(home)/layout.tsx
-export { metadata } from "../layout"; // reuse global metadata
-import HomeReveal from "./HomeReveal";
+export { metadata } from "../layout"; // optional; you can also remove this line and parent metadata will still apply
 
-export default function HomeLayout({ children }: { children: React.ReactNode }) {
-  return <HomeReveal>{children}</HomeReveal>;
+export default function HomeLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <>{children}</>;
 }
