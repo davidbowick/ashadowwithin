@@ -143,6 +143,7 @@ export default async function VideoPage() {
         <iframe
           src={`https://www.youtube.com/embed/${featured.id}?rel=0&modestbranding=1`}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          title={featured.title}
           allowFullScreen
         />
       </section>

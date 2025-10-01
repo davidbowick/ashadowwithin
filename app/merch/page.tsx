@@ -88,8 +88,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "Official A Shadow Within merch – tees, hoodies, and more. New items added regularly.",
     openGraph: {
       title: `${title} | A Shadow Within`,
-      description:
-        "Shop official A Shadow Within merchandise.",
+      description: "Shop official A Shadow Within merchandise.",
       url: "https://ashadowwithin.com/merch",
       type: "website",
     },
@@ -154,62 +153,61 @@ export default async function MerchPage() {
     })),
   };
 
-
   return (
     <main className={styles.container}>
       {/* SEO Structured Data */}
       <Script
-  id="merch-jsonld"
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify(
-      [
-        // ItemList schema
-        {
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          itemListElement: products.map((p, i) => ({
-            "@type": "ListItem",
-            position: i + 1,
-            url:
-              p.onlineStoreUrl ??
-              `https://${process.env.SHOPIFY_STORE_DOMAIN}/products/${p.handle}`,
-            name: p.title,
-          })),
-        },
-        // Product schemas
-        ...products.map((p) => {
-          const img = p.featuredImage;
-          const url =
-            p.onlineStoreUrl ??
-            `https://${process.env.SHOPIFY_STORE_DOMAIN}/products/${p.handle}`;
-          const price = p.priceRange.minVariantPrice;
+        id="merch-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            [
+              // ItemList schema
+              {
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                itemListElement: products.map((p, i) => ({
+                  "@type": "ListItem",
+                  position: i + 1,
+                  url:
+                    p.onlineStoreUrl ??
+                    `https://${process.env.SHOPIFY_STORE_DOMAIN}/products/${p.handle}`,
+                  name: p.title,
+                })),
+              },
+              // Product schemas
+              ...products.map((p) => {
+                const img = p.featuredImage;
+                const url =
+                  p.onlineStoreUrl ??
+                  `https://${process.env.SHOPIFY_STORE_DOMAIN}/products/${p.handle}`;
+                const price = p.priceRange.minVariantPrice;
 
-          return {
-            "@context": "https://schema.org",
-            "@type": "Product",
-            name: p.title,
-            image: img ? img.url : undefined,
-            url,
-            offers: {
-              "@type": "Offer",
-              price: price.amount,
-              priceCurrency: price.currencyCode,
-              availability: "https://schema.org/InStock", // could be dynamic
-              url,
-            },
-            brand: {
-              "@type": "MusicGroup",
-              name: "A Shadow Within",
-            },
-          };
-        }),
-      ],
-      null,
-      2
-    ),
-  }}
-/>
+                return {
+                  "@context": "https://schema.org",
+                  "@type": "Product",
+                  name: p.title,
+                  image: img ? img.url : undefined,
+                  url,
+                  offers: {
+                    "@type": "Offer",
+                    price: price.amount,
+                    priceCurrency: price.currencyCode,
+                    availability: "https://schema.org/InStock", // could be dynamic
+                    url,
+                  },
+                  brand: {
+                    "@type": "MusicGroup",
+                    name: "A Shadow Within",
+                  },
+                };
+              }),
+            ],
+            null,
+            2
+          ),
+        }}
+      />
       <div className={styles.headerRow}>
         <h1>{collection?.title ?? "Merch"}</h1>
         <a
@@ -223,12 +221,12 @@ export default async function MerchPage() {
       </div>
 
       <section className={styles.grid}>
-        {products.map((p) => {
+        {products.map((p, index) => {
           const img = p.featuredImage;
           const price = formatPrice(
-  p.priceRange.minVariantPrice.amount,
-  p.priceRange.minVariantPrice.currencyCode
-);
+            p.priceRange.minVariantPrice.amount,
+            p.priceRange.minVariantPrice.currencyCode
+          );
           const url =
             p.onlineStoreUrl ??
             `https://${process.env.SHOPIFY_STORE_DOMAIN}/products/${p.handle}`;
@@ -243,7 +241,10 @@ export default async function MerchPage() {
                     width={img.width || 600}
                     height={img.height || 600}
                     className={styles.image}
-                    loading="lazy"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 300px"
+                    priority={index < 3} // only the first row gets priority
+                    fetchPriority={index < 3 ? "high" : "auto"}
+                    loading={index < 3 ? "eager" : "lazy"}
                   />
                 ) : (
                   <div className={styles.imageFallback} />

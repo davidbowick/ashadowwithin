@@ -31,7 +31,7 @@ export default async function MusicPage() {
 
       <h1 className="center visually-hidden">Music</h1>
       <div className={styles.albumsGrid}>
-        {releases.map((release: any) => (
+        {releases.map((release: any, index: number) => (
           <div key={release._id} className={styles.albumCard}>
             <div className={styles.artworkWrapper}>
               <Image
@@ -40,7 +40,10 @@ export default async function MusicPage() {
                 width={400}
                 height={400}
                 className={styles.artwork}
+                fetchPriority={index < 3 ? "high" : "auto"}
+                loading={index < 3 ? "eager" : "lazy"}
                 placeholder="blur"
+                sizes="(max-width: 768px) 100vw, 400px"
                 blurDataURL={urlFor(release.coverImage).width(20).blur(10).url()}
               />
 

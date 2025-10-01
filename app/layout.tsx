@@ -1,16 +1,12 @@
 import Script from "next/script"
 import { usePathname } from "next/navigation";  
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import HeaderWrapper from "./components/HeaderWrapper";
 import TextureOverlay from "./components/TextureOverlay";
 import Footer from "./components/Footer";
 
-
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 const aShadowWithin = localFont({
   src: [
@@ -101,6 +97,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        {/* Preconnects only to domains you actually use */}
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://img.youtube.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://i.ytimg.com" crossOrigin="anonymous" />
+
+        {/* Shopify CDN (your product images, merch, etc.) */}
+        <link rel="preconnect" href="https://cdn.shopify.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://shopify-assets.shopifycdn.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.shopifycdn.net" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://image.shopifycdn.com" crossOrigin="anonymous" />
       </head>
       <body>
         {/* Skip link for accessibility */}
