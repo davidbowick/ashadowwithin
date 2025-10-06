@@ -63,18 +63,18 @@ export default function MetalHamburger({
           />
         </g>
         <defs>
-          <filter id="rough">
+          <filter id="rough" filterUnits="userSpaceOnUse">
             <feTurbulence
               type="fractalNoise"
-              baseFrequency="0.2"
-              numOctaves="0.2"
+              baseFrequency="2"
+              numOctaves="2"
               result="turb"
               seed="10"
             />
             <feDisplacementMap
               in="SourceGraphic"
               in2="turb"
-              scale="0.1"
+              scale="2"
               xChannelSelector="R"
               yChannelSelector="G"
             />
