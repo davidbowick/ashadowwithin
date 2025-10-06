@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     description: "Alternative Metal band from Denver, CO. New music, videos, and merch.",
     url: "https://ashadowwithin.com",
     siteName: "A Shadow Within",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "A Shadow Within band logo" }],
+    images: [{ url: "https://ashadowwithin.com/web-app-manifest-512x512.png", width: 512, height: 512, alt: "A Shadow Within icon logo" }],
     locale: "en_US",
     type: "website",
   },
