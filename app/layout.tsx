@@ -6,6 +6,8 @@ import "./globals.css";
 import HeaderWrapper from "./components/HeaderWrapper";
 import TextureOverlay from "./components/TextureOverlay";
 import Footer from "./components/Footer";
+import CookieConsent from "./components/CookieConsent";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 
 
 const aShadowWithin = localFont({
@@ -118,21 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <TextureOverlay />
 
-        {/* Google Analytics */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
+        
         {/* JSON-LD Schema */}
         <Script
           id="schema-musicgroup"
@@ -142,6 +130,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         
         </div>
+        {/* Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            window.gtag = window.gtag || gtag;
+
+            gtag('js', new Date());
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              analytics_storage: 'denied',
+              functionality_storage: 'denied',
+              personalization_storage: 'denied',
+              security_storage: 'granted'
+            });
+          `}
+        </Script>
+        <CookieConsent />
       </body>
     </html>
   );
