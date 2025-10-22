@@ -59,6 +59,8 @@ body::before {
   width: 100%;
   max-width: 1800px;
   margin: 0 auto;
+  padding: 1rem 2rem;
+
 }
 
 .visually-hidden {
@@ -152,4 +154,10 @@ h1 {
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    padding: 1rem;
+  }
 }

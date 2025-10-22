@@ -1,10 +1,11 @@
 import { createClient } from "@sanity/client";
+import { projectId, dataset, apiVersion } from "../../sanity/env";
 
 export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!, // set in .env
-  dataset: "production",
+  projectId,
+  dataset,
   useCdn: true, // `false` if you want the freshest data
-  apiVersion: "2025-01-01", // today's date or latest
+  apiVersion,
 });
 
 export async function getReleases() {
@@ -12,10 +13,13 @@ export async function getReleases() {
     *[_type == "release"] | order(releaseDate desc) {
       _id,
       title,
+      "slug": slug.current,
       releaseDate,
       "coverImage": coverImage.asset->url,
+      // include links.spotify and keep spotifyUrl for compatibility during migration
+      links,
       spotifyUrl,
-      links
+      isrc
     }
   `);
 }

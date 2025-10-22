@@ -3,15 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 import { NAV_ITEMS } from "./navItems";
 import MetalHamburger from "./MetalHamburger";
 
 export default function Header() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
+  const isHome = pathname === "/";
 
   return (
     <header
@@ -45,7 +45,7 @@ export default function Header() {
 
       {/* Desktop nav (only shows off-homepage) */}
       
-        <nav className={styles.navDesktop}>
+        <nav className={styles.navDesktop} suppressHydrationWarning>
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -72,7 +72,7 @@ export default function Header() {
       {/* Overlay menu */}
       {menuOpen && (
         <div className={styles.overlay}>
-          <nav className={styles.menuContent}>
+          <nav className={styles.menuContent} suppressHydrationWarning>
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href;
               return (

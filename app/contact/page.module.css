@@ -103,3 +103,9 @@
   max-width: 1200px !important;
   margin: 0px auto;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+}

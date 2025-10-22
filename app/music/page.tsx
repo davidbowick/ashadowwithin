@@ -16,8 +16,17 @@ export default async function MusicPage() {
       "@type": "MusicAlbum",
       name: r.title,
       url: `https://ashadowwithin.com/music/${r._id}`,
-      image: r.coverImage,
+      image: urlFor(r.coverImage).width(1200).url(),
+  ...(r.isrc ? { isrcCode: r.isrc } : {}),
       datePublished: r.releaseDate,
+      ...(r.tracks && Array.isArray(r.tracks)
+        ? { track: r.tracks.map((t: any, i: number) => ({
+            "@type": "MusicRecording",
+            position: i + 1,
+            name: t.title || t.name || t,
+            duration: t.duration || undefined,
+          })) }
+        : {}),
     })),
   };
 
@@ -54,9 +63,9 @@ export default async function MusicPage() {
                   {new Date(release.releaseDate).toLocaleDateString()}
                 </p>
                 <ul className={styles.links}>
-                  {release.spotifyUrl && (
+                  {(release.links?.spotify || release.spotifyUrl) && (
                     <li>
-                      <a href={release.spotifyUrl} target="_blank" rel="noopener noreferrer">
+                      <a href={release.links?.spotify || release.spotifyUrl} target="_blank" rel="noopener noreferrer">
                         Spotify
                       </a>
                     </li>

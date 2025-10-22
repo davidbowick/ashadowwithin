@@ -99,6 +99,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
   .albumsGrid {
     grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
   }

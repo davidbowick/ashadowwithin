@@ -1,0 +1,174 @@
+.container {
+  
+  margin: 0 auto;
+  
+  color: #fff;
+  overflow: visible; /* ensure descendants can stick */
+}
+/* Layout for individual lyric page */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2.25rem;
+}
+
+.main {
+  min-width: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+}
+
+.sidebar {
+  max-width: 500px;
+}
+
+.sticky {
+  position: -webkit-sticky; /* iOS Safari fallback */
+  position: sticky;
+  top: 95px; /* offset below header */
+
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.coverWrap {
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+.cover {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.videoWrap {
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.backWrap {
+  margin: 0 0 0.75rem 0;
+}
+
+.backWrapBottom {
+  margin-top: 1.5rem;
+}
+
+.backLink {
+  color: #e6f7ff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.backLink:hover, .backLink:focus {
+  text-decoration: underline;
+}
+
+.links h4 {
+  margin: 0.5rem 0 0.25rem 0;
+  color: #ddd;
+  font-size: 0.95rem;
+}
+
+.links ul {
+  margin: 0.25rem 0 0 0;
+  padding-left: 1rem;
+  color: #cfcfcf;
+}
+
+/* Icon link list */
+.iconList {
+  list-style: none;
+  margin: 0.25rem 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.iconList li {
+  margin: 0;
+}
+
+.linkItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #e6f7ff;
+  text-decoration: none;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.icon path {
+  fill: currentColor
+}
+
+.label {
+  font-size: 0.95rem;
+  color: #e6f7ff;
+}
+
+.meta {
+  color: #bdbdbd;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.credits {
+  color: #ddd;
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+/* Link styling */
+.links a, .sticky a {
+  color: #e6f7ff;
+  text-decoration: none;
+}
+
+.links a:hover, .sticky a:hover {
+  text-decoration: underline;
+}
+
+/* Typography for lyrics */
+.lyrics {
+  white-space: pre-wrap;
+  line-height: 1.85;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  color: #f6f6f6;
+}
+
+/* Responsive: stack sidebar under main on small screens */
+@media (max-width: 880px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .sticky {
+    position: static;
+    top: auto;
+    margin-top: 1rem;
+  }
+}

@@ -1,7 +1,9 @@
 .main {
   position: relative;
-  height: 100vh;
-  overflow: hidden;
+  /* Allow the page to grow naturally and not clip scrolling content
+     so descendant position:sticky elements can stick properly. */
+  height: auto;
+  overflow: visible;
 }
 
 .videoBackground {
@@ -36,6 +38,4 @@
   transform: translateY(-50%);
 }
 
-.videoBackground {
-  /* filter: grayscale(90%) contrast(1.5) brightness(1.5) blur(1px); */
-}
+/* videoBackground filters (kept commented) */

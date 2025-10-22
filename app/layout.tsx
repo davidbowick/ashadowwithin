@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  metadataBase: new URL("https://ashadowwithin.com"),
   twitter: {
     card: "summary_large_image",
     site: "@a_shadow_within",
@@ -127,6 +128,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+        <Script
+          id="schema-website"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "A Shadow Within",
+            url: "https://ashadowwithin.com",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: "https://ashadowwithin.com/?s={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          }) }}
         />
         
         </div>

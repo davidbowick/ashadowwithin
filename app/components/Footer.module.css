@@ -4,6 +4,8 @@
   padding: 3rem 1.5rem;
   font-size: 0.95rem;
   margin-top: 3rem;
+  position: relative;
+  z-index: 200; /* sit above fixed/absolute sidebars */
 }
 
 .container {
